@@ -4,6 +4,7 @@
   "description": "An opinionated boiler plate for node modules.",
   "main": "./lib/api.js",
   "scripts": {
+    "dev": "nodemon -x 'node bin/server.js'",
     "start": "node ./bin/server.js"
   },
   "repository": {
