@@ -1,0 +1,32 @@
+{
+  "name": "node_boilerplate",
+  "version": "1.0.0",
+  "description": "An opinionated boiler plate for node modules.",
+  "main": "./lib/api.js",
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beginnerprise/node_boilerplate.git"
+  },
+  "author": "Benjamin Hudgens",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Beginnerprise/node_boilerplate/issues"
+  },
+  "homepage": "https://github.com/Beginnerprise/node_boilerplate#readme",
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "colors": "1.4.0",
+    "cookie-parser": "1.4.4",
+    "debug": "4.1.1",
+    "express": "4.17.1",
+    "express-session": "1.16.2",
+    "shell-quote": "1.7.2"
+  },
+  "engines": {
+    "node": "12.18.2",
+    "npm": "6.14.5"
+  }
+}
