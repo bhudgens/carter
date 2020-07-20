@@ -14,9 +14,9 @@
 
 <body>
   <div>
-    <h1>Hello, world!</h1>
-    <button type="button" class="btn btn-success">button 1</button>
-    <button type="button" class="btn btn-danger">button 2</button>
+    <h1 id="header">Hello, world!</h1>
+    <input id="password" type="text" />
+    <button id="doit" type="button" class="btn btn-danger">Tryit</button>
   </div>
 
   <!-- Optional JavaScript -->
@@ -25,7 +25,28 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script>
-    setTimeout(() => window.location.href = window.location.href, 5000);
+    // setTimeout(() => window.location.href = window.location.href, 5000);
+    const _doit = document.getElementById("doit");
+    const _password = document.getElementById("password");
+    const _header = document.getElementById("header");
+    _doit.addEventListener("click", event => {
+      fetch(`https://bhudgens.ngrok.io/codes/${_password.value}`)
+        .then(response => {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          response.json()
+        })
+        .then(data => {
+          console.log(data)
+          _header.innerHTML = "Correct!"
+        })
+        .catch(error => {
+          console.error(error)
+          _header.innerHTML = "Wrong!"
+        });
+    });
+
   </script>
 </body>
 

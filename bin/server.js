@@ -1,7 +1,9 @@
+/** Logger */
+const log = require("../src/lib/log.js").init('servers.js');
+
 /** Hookup Express */
 const express = require("express");
 const app = express();
-const log = require("../src/lib/log.js").init('servers.js');
 
 /** Configure our body Parser */
 const bodyParser = require("body-parser");
@@ -13,14 +15,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
  ********************************************************************/
 
 app.use("/", express.static(`${__dirname}/../public`));
+
 app.get("/codes/:password", (req, res) => {
   const { password } = req.params;
-  if (password !== 1234) {
+  /** An example of capturing a password.  We will learn
+      how to not store real passwords in our code later */
+  if (Number(password) !== 5544) {
     const error = "You do not have the correct password";
-    log.red(`Password provided ${password}`);
+    log.red(`Password provided: ${password}`);
     return res.status(403).json({ error });
   }
+
+  /** If things work out we'll get to the stuff below.  If
+      the password was wrong they would get stopped above */
   const message = `It worked: ${req.params.password}`;
+  log.green(`Password provided: ${password}`);
   res.status(200).json({ message });
 });
 
